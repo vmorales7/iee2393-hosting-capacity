@@ -10,8 +10,6 @@ Este proyecto corresponde al informe final del curso **IEE2393 - Redes Inteligen
 - **IEE2393_Proyecto.pdf:** Enunciado oficial del proyecto.
 - **Resultados/**: Carpeta **generada automáticamente** donde se almacenan todas las salidas, gráficos y archivos de resultados creados por el script.
 
-Las figuras y resultados generados se almacenan en la carpeta `/Resultados`, la cual se crea automáticamente si no existe.
-
 ## Requerimientos
 
 - Python 3.8 o superior
