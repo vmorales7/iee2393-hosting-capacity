@@ -98,7 +98,7 @@ def graficar_carga_por_linea(
     plt.tight_layout()
 
     if nombre_archivo is not None:
-        plt.savefig(f"{nombre_archivo}.png", dpi=300)
+        plt.savefig(f"{nombre_archivo}.png", dpi=150)
 
     plt.close()
     return
@@ -275,6 +275,6 @@ def graficar_perfiles_horarios(
 
     plt.tight_layout()
     if nombre_archivo is not None:
-        plt.savefig(f"{nombre_archivo}.png", dpi=300)
+        plt.savefig(f"{nombre_archivo}.png", dpi=150)
     plt.close()
     return
