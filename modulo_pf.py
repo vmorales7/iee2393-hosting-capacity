@@ -37,7 +37,7 @@ def ejecutar_pf(demanda_neta_kw, nombre_archivo_salida=None):
         DataFrame: Un DataFrame con los resultados de carga de las líneas.
                    Retorna un DataFrame vacío si el flujo no converge.
     """
-    print(f"--- Ejecutando PF: Demanda Neta={demanda_neta_kw} kW por comunidad ---")
+    # print(f"--- Ejecutando PF: Demanda Neta={demanda_neta_kw} kW por comunidad ---")
     demanda_neta_mw = demanda_neta_kw / 1000
     net = build_base_network()
 
@@ -51,7 +51,7 @@ def ejecutar_pf(demanda_neta_kw, nombre_archivo_salida=None):
 
     try:
         pp.runpp(net)
-        print("Flujo de potencia completado.")
+        # print("Flujo de potencia completado.")
     
         
         # dataframe de lineas
@@ -63,10 +63,9 @@ def ejecutar_pf(demanda_neta_kw, nombre_archivo_salida=None):
 
         # Guardar archivos (gráfico y Excel) solo si se proporciona un nombre
         if nombre_archivo_salida is not None:
-            print(f"Guardando gráfico en '{nombre_archivo_salida}_resultados.html'...")
-            pf_res_plotly(net, filename=f"{nombre_archivo_salida}_resultados.html")
-
-            print(f"Guardando resultados en '{nombre_archivo_salida}.xlsx'...")
+            print(f"Guardando gráfico en '{nombre_archivo_salida}_lineas.html'...")
+            pf_res_plotly(net, filename=f"{nombre_archivo_salida}_lineas.html", auto_open=False)
+            print(f"Guardando resultados en '{nombre_archivo_salida}_resultados.xlsx'...")
             with pd.ExcelWriter(f"{nombre_archivo_salida}.xlsx") as writer:
                 # La línea para guardar voltajes comentada
                 # df_bus.to_excel(writer, sheet_name="Resultados_Voltaje", index=False)
@@ -74,8 +73,6 @@ def ejecutar_pf(demanda_neta_kw, nombre_archivo_salida=None):
 
         # La función ahora retorna únicamente el DataFrame de las líneas
         return df_line
-
- 
 
     except pp.LoadflowNotConverged:
         print("Error: El flujo de potencia no convergió para este caso.")
